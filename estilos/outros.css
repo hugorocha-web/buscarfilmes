@@ -1,16 +1,23 @@
-header{
-    #divinf{
-        background-color: beige;
-        width: 400px;
+header {
+    #divinf {
+        display: flex;
         flex-direction: row;
-        input{
-            flex: 0 1 1fr;
+        width: 700px;
+        align-self: center;
+        
+
+        div {
+            width: 500px;
+            margin-bottom: 31px;
+            position: relative;
+            i{
+                position: relative;
+                left: 13%;
+            }
         }
-        button{
-            flex: 0 1 1fr
+
+        button {
+            width: 200px;
         }
     }
-
-
-
 }
