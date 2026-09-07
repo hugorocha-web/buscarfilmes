@@ -87,6 +87,13 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    #divsem{
+        background-color: aliceblue;
+        padding: 30px;
+        border-radius: 12px;
+        font-size: 1.5em;
+
+    }
     #resultadosnome{
         text-align: center;
         color: #e4e4e4;
@@ -95,7 +102,7 @@ main{
     #cartaz{
         display: flex;
         flex-direction: column;
-        height: 700px;
+        min-height: 700px;
         width: 85%;
         border: 1px solid #3F4B61;
         align-items: center;

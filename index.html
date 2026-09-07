@@ -6,7 +6,7 @@
     <title>buscador de filmes</title>
     <link rel="stylesheet" href="estilos/outros.css" media="screen and (min-width: 791px)">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
         <p>Encontre seus filmes favoritos de forma rápida e fácil!</p>
         <div id="divinf">
             <i class="fa-solid fa-magnifying-glass-minus"></i>
-            <input type="text" name="nomefilme" id="nomefilme" placeholder="Digite o nome de um filme...">
+            <input type="text" name="nomefilme" id="inp" placeholder="Digite o nome de um filme...">
             <button>Buscar</button>
         </div>
     </header>
@@ -37,6 +37,9 @@
                     <p id="pnota">8.6</p>
                 </div>
             </div>
+        </div>
+        <div id="divsem" style="display: none;">
+            <p id="semfilme">nenhum filme encontrado!</p>
         </div>
     </main>
     <footer>

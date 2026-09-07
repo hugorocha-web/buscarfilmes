@@ -4,13 +4,25 @@ let btn = document.querySelector('button')
 btn.addEventListener('click', buscarfilme)
 let clonado = document.querySelector('#cartaz')
 let main  = document.querySelector('main')
+let input = document.querySelector('#inp')
+let div = document.getElementById('divsem')
+input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        buscarfilme()
+    }
+})
 
 async function buscarfilme() {
     main.style.display = 'flex'
     main.innerHTML = ""
-    let valor = document.querySelector('input').value.toLowerCase().trim()
+    let valor = document.querySelector('input').value.trim()
+    valor = encodeURIComponent(valor)
     if(valor === ''){
-        return none
+        let clonesem = div.cloneNode(true)
+        clonesem.style.display  = 'block'
+        console.log(clonesem)
+        main.appendChild(clonesem)
+        return
     }
     try{
         const resposta = await fetch(
@@ -23,6 +35,14 @@ async function buscarfilme() {
         }
     )
         let json = await resposta.json()
+        console.log(json)
+        if(json.results.length == 0){
+            let clonesem = div.cloneNode(true)
+            clonesem.style.display  = 'block'
+            console.log(clonesem)
+            main.appendChild(clonesem)
+            return
+        }
         const generos = {
             28: "Ação",
             12: "Aventura",
@@ -50,13 +70,13 @@ async function buscarfilme() {
 
 
             let clone = clonado.cloneNode(true)
-            let img  = 'https://image.tmdb.org/t/p/w500' + json.results[i].backdrop_path
+            let img  = 'https://image.tmdb.org/t/p/w500' + json.results[i].poster_path
             console.log(img)
-            clone.querySelector('#nomefilme').textContent = json.results[i].original_title
+            clone.querySelector('#nomefilme').textContent = json.results[i].title
             clone.querySelector('#anofilme').textContent = json.results[i].release_date
             clone.querySelector('#pnota').textContent = json.results[i].vote_average
             let imgclone = clone.querySelector('img')
-            if (json.results[i].backdrop_path !== null) {
+            if (json.results[i].poster_path !== null) {
                  imgclone.src = img
             }
             else{
@@ -64,7 +84,7 @@ async function buscarfilme() {
             }
             
             clone.style.display = 'flex'
-            let nomesGeneros = json.results[i].genre_ids.map(id => generos[id])
+            let nomesGeneros = json.results[i].genre_ids.map(id => generos[id]).filter(Boolean)
             let finalgen = nomesGeneros.join(" • ")
             clone.querySelector('#coisas').textContent = finalgen
             console.log(nomesGeneros)
