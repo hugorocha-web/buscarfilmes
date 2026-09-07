@@ -1,0 +1,16 @@
+header{
+    #divinf{
+        background-color: beige;
+        width: 400px;
+        flex-direction: row;
+        input{
+            flex: 0 1 1fr;
+        }
+        button{
+            flex: 0 1 1fr
+        }
+    }
+
+
+
+}

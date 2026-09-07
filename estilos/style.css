@@ -43,6 +43,11 @@ header{
         display: flex;
         flex-direction: column;
         width: 80%;
+        div{
+            align-self: center;
+            width: 100%;
+            
+        }
         i{
             position: absolute;
             margin-top: 6px;
@@ -58,6 +63,7 @@ header{
             text-align: center;
             color: aliceblue;
             font-size: 1.3em;
+            width: 100%;
         }
         input::placeholder{
             text-align: center;
