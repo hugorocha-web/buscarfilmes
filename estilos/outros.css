@@ -21,3 +21,78 @@ header {
         }
     }
 }
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    #divsem{
+        background-color: aliceblue;
+        padding: 30px;
+        border-radius: 12px;
+        font-size: 1.5em;
+
+    }
+    #resultadosnome{
+        text-align: center;
+        color: #e4e4e4;
+        margin: 30px;
+    }
+    #cartaz{
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        width: 300px;
+        border: 1px solid #3F4B61;
+        align-items: center;
+        border-radius: 20px;
+        margin: 7px;
+        img{
+            height: 50%;
+            width: 95%;
+            border-radius: 20px;
+
+            object-fit: cover;
+            object-position: center top;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: flex-start;
+            h2{
+                color: aliceblue;
+                margin-bottom: 10px;
+                font-size: 1.8em;
+            }
+            p{
+                color: rgba(240, 248, 255, 0.635);
+                margin-bottom: 10px;
+                font-size: 1.1em;
+            }
+            #caracteristicas{
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 10px;
+                i{
+                    color: rgba(255, 255, 255, 0.635);
+                    margin-right: 10px;
+                    font-size: 1.7em;
+                }
+            }
+            #nota{
+                display: flex;
+                flex-direction: row;
+                i{
+                    color: rgba(254, 229, 7, 0.635);
+                    margin-right: 10px;
+                    font-size: 1.7em;
+                }
+            }
+        }
+    }
+
+
+
+
+}
