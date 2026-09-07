@@ -20,7 +20,6 @@ async function buscarfilme() {
     if(valor === ''){
         let clonesem = div.cloneNode(true)
         clonesem.style.display  = 'block'
-        console.log(clonesem)
         main.appendChild(clonesem)
         return
     }
@@ -35,11 +34,9 @@ async function buscarfilme() {
         }
     )
         let json = await resposta.json()
-        console.log(json)
         if(json.results.length == 0){
             let clonesem = div.cloneNode(true)
             clonesem.style.display  = 'block'
-            console.log(clonesem)
             main.appendChild(clonesem)
             return
         }
@@ -65,13 +62,13 @@ async function buscarfilme() {
             37: "Faroeste"
         }
         
-        console.log(json.results)
+        
         for ( let i = 0; json.results.length > i ; i++){
 
 
             let clone = clonado.cloneNode(true)
             let img  = 'https://image.tmdb.org/t/p/w500' + json.results[i].poster_path
-            console.log(img)
+            
             clone.querySelector('#nomefilme').textContent = json.results[i].title
             clone.querySelector('#anofilme').textContent = json.results[i].release_date
             clone.querySelector('#pnota').textContent = json.results[i].vote_average
@@ -87,7 +84,7 @@ async function buscarfilme() {
             let nomesGeneros = json.results[i].genre_ids.map(id => generos[id]).filter(Boolean)
             let finalgen = nomesGeneros.join(" • ")
             clone.querySelector('#coisas').textContent = finalgen
-            console.log(nomesGeneros)
+            
             main.appendChild(clone)
 
 
