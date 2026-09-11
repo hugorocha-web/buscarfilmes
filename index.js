@@ -11,7 +11,6 @@ input.addEventListener('keydown', (event) => {
         buscarfilme()
     }
 })
-
 async function buscarfilme() {
     main.style.display = 'flex'
     main.innerHTML = ""
@@ -61,19 +60,44 @@ async function buscarfilme() {
             10752: "Guerra",
             37: "Faroeste"
         }
+        function ordenarListaPorChave(arr, chave, crescente = true) {
         
-        
-        for ( let i = 0; json.results.length > i ; i++){
 
+        if (!Array.isArray(arr)) {
+            throw new Error("O primeiro parâmetro deve ser um array.");
+        }
+        if (arr.length === 0) return [];
+
+        if (!(chave in arr[0])) {
+            throw new Error(`A chave "${chave}" não existe nos objetos da lista.`);
+        }
+
+        return [...arr].sort((a, b) => {
+            
+            const valorA = a[chave];
+            const valorB = b[chave];
+
+
+            if (valorA < valorB) return crescente ? -1 : 1;
+            if (valorA > valorB) return crescente ? 1 : -1;
+            return 0;
+        });
+    }
+
+
+        const ordenadoPorIdade = ordenarListaPorChave(json.results, "release_date", false);
+        
+        for ( let i = 0; ordenadoPorIdade.length > i ; i++){
+            
 
             let clone = clonado.cloneNode(true)
-            let img  = 'https://image.tmdb.org/t/p/w500' + json.results[i].poster_path
+            let img  = 'https://image.tmdb.org/t/p/w500' + ordenadoPorIdade[i].poster_path
             
-            clone.querySelector('#nomefilme').textContent = json.results[i].title
-            clone.querySelector('#anofilme').textContent = json.results[i].release_date
-            clone.querySelector('#pnota').textContent = json.results[i].vote_average
+            clone.querySelector('#nomefilme').textContent = ordenadoPorIdade[i].title
+            clone.querySelector('#anofilme').textContent = ordenadoPorIdade[i].release_date
+            clone.querySelector('#pnota').textContent = ordenadoPorIdade[i].vote_average
             let imgclone = clone.querySelector('img')
-            if (json.results[i].poster_path !== null) {
+            if (ordenadoPorIdade[i].poster_path !== null) {
                  imgclone.src = img
             }
             else{
@@ -81,7 +105,7 @@ async function buscarfilme() {
             }
             
             clone.style.display = 'flex'
-            let nomesGeneros = json.results[i].genre_ids.map(id => generos[id]).filter(Boolean)
+            let nomesGeneros = ordenadoPorIdade[i].genre_ids.map(id => generos[id]).filter(Boolean)
             let finalgen = nomesGeneros.join(" • ")
             clone.querySelector('#coisas').textContent = finalgen
             
