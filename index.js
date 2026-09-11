@@ -76,7 +76,13 @@ async function buscarfilme() {
             
             const valorA = a[chave];
             const valorB = b[chave];
+            if (valorA === " " && valorB !== " ") return 1;
 
+            
+            if (valorB === " " && valorA !== " ") return -1;
+
+            
+            if (valorA === " " && valorB === " ") return 0;
 
             if (valorA < valorB) return crescente ? -1 : 1;
             if (valorA > valorB) return crescente ? 1 : -1;
